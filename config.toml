@@ -1,0 +1,108 @@
+Title =  "快乐编码"
+LanguageCode = "zh-CN"
+BaseUrl = "http://blog.threeq.me/"
+Theme =  "next"
+MetaDataFormat =  "yaml"
+CanonifyUrls =  true
+BuildDrafts =  false
+PaginatePath =  "p"
+Paginate = 8
+DisablePathToLower =  false
+HasCJKLanguage = true
+PreserveTaxonomyNames = false
+UglyUrls = false
+PygmentsStyle = "monokai"
+PygmentsUseClasses = true
+DefaultContentLanguage = "zh"
+
+[Params]
+  Introduce = "Programmer & Architect"
+  Description = "快乐编码 | 博客 | 软件 | 架构 | Java | Golang"
+  Keywords =  "快乐编码,独立,博客,程序员,架构师,个人,思考,读书,笔记,技术,分享,Golang,Java,Javascript,Python,微服务,敏捷,Scrum,看板"
+  Subtitle = "Happy Coding"
+  Imglogo = "/img/logo.png"
+  AuthorImg = "/img/author.png"
+  DateFormat = "2006-01-02"
+  YearFormat = "2006年"
+  MonthFormat = "01-02"
+  BaiduStatsId = "afc37e408e5e1f75391b13a5fee21db8"
+  QQStatsId = "448987046"
+  Fancybox = true
+
+[Author]
+  Name = "Threeq"
+  License = "自由转载-非商用-非衍生-保持署名（创作共享3.0许可证）"
+
+#[permalinks]
+#  post = "/:year/:month/:title/"
+
+[Params.Share]
+  DuoShuo = "three"
+  #Baidu = true
+
+[[Menu.Main]]
+  Name = "首页"
+  Pre = "home"
+  URL = "/"
+  Weight = 1
+#[[Menu.Main]]
+#  Name = "技术"
+#  Pre = "code"
+#  URL = "/categories/技术/"
+#  Weight = 2
+#[[Menu.Main]]
+#  Name = "感想"
+#  Pre = "tint"
+#  URL = "/categories/感想/"
+#  Weight = 3
+#[[Menu.Main]]
+#  Name = "笔记"
+#  Pre = "book"
+#  URL = "/categories/笔记/"
+#  Weight = 4
+#[[Menu.Main]]
+#  Name = "杂记"
+#  Pre = "leaf"
+#  URL = "/categories/杂记/"
+#  Weight = 5
+[[Menu.Main]]
+  Name = "分类"
+  Pre = "th"
+  URL = "/categories/"
+  Weight = 2
+[[Menu.Main]]
+  Name = "标签"
+  Pre = "tags"
+  URL = "/tags/"
+  Weight = 3
+[[Menu.Main]]
+  Name = "归档"
+  Pre = "archive"
+  URL = "/post/"
+  Weight = 6
+[[Menu.Main]]
+  Name = "关于"
+  Pre = "user"
+  URL = "/about/"
+  Weight = 7
+
+
+[[Params.Socials]]
+  Name = "GitHub"
+  Icon = "github"
+  URL = "https://github.com/threeq"
+
+[[Params.Socials]]
+  Name = "Facebook"
+  Icon = "facebook"
+  URL = "https://www.facebook.com/three3q"
+
+[[Params.Socials]]
+  Name = "Twitter"
+  Icon = "twitter"
+  URL = "https://twitter.com/threewq"
+
+[[Params.Socials]]
+  Name = "Mail"
+  Icon = "envelope"
+  URL = "mailto:threeq@foxmail.com"
