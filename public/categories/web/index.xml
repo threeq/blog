@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Threeq - 傻傻程序员</title>
+    <link>http://threeq.me/categories/web/</link>
+    <description>Recent content in Web on Threeq - 傻傻程序员</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://threeq.me/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSS3 新增选择器</title>
+      <link>http://threeq.me/post/web/css3-added-selector/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://threeq.me/post/web/css3-added-selector/</guid>
+      <description>&lt;p&gt;现代前端开发中css3已经是不可其他的一部分，早已成为每个web开发人员必备技能之一。
+而选择器又是css中最基础、最重要的知识点，对于我们页面结构和代码接口都有着举足轻重的作用。
+今天我们就来看看css3所支持的和新增的选择器。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

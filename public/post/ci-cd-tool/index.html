@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>项目持续集成工具 - Threeq - 傻傻程序员</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Threeq" />
+  <meta name="description" content="每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实" />
+
+  <meta name="keywords" content="Threeq, 博客, 程序员, 架构师, 敏捷, scrum, 看板, Java, Python, Golang, Javascript" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37" />
+
+
+<link rel="canonical" href="http://threeq.me/post/ci-cd-tool/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="项目持续集成工具" />
+<meta property="og:description" content="每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://threeq.me/post/ci-cd-tool/" />
+
+
+
+<meta property="article:published_time" content="2018-04-04T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-04-04T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="项目持续集成工具">
+<meta itemprop="description" content="每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实">
+
+
+<meta itemprop="datePublished" content="2018-04-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="7200">
+
+
+
+<meta itemprop="keywords" content="jenkins,gerrit,gitlab,redmine,CI/CD," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="项目持续集成工具"/>
+<meta name="twitter:description" content="每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Threeq</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Threeq</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">项目持续集成工具</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-04 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#工具流程">工具流程</a>
+<ul>
+<li><a href="#整理流程">整理流程</a></li>
+<li><a href="#gerrit代码审查流程">gerrit代码审查流程</a></li>
+</ul></li>
+<li><a href="#选择工具的思考">选择工具的思考</a></li>
+<li><a href="#代码管理环境">代码管理环境</a>
+<ul>
+<li><a href="#git">GIT</a></li>
+<li><a href="#svn-有这个没有必要cvs了">SVN(有这个没有必要CVS了)</a></li>
+<li><a href="#git服务器">git服务器</a></li>
+</ul></li>
+<li><a href="#任务-缺陷管理环境">任务/缺陷管理环境</a></li>
+<li><a href="#持续集成环境">持续集成环境</a></li>
+<li><a href="#代码质量监控环境">代码质量监控环境</a></li>
+<li><a href="#文档编辑环境">文档编辑环境</a></li>
+<li><a href="#沟通环境">沟通环境</a></li>
+<li><a href="#项目开发环境">项目开发环境</a>
+<ul>
+<li><a href="#工程管理工具">工程管理工具</a></li>
+<li><a href="#项目开发工具">项目开发工具</a></li>
+</ul></li>
+<li><a href="#需求-产品管理环境">需求/产品管理环境</a></li>
+<li><a href="#测试管理环境">测试管理环境</a>
+<ul>
+<li><a href="#测试管理工具">测试管理工具</a></li>
+<li><a href="#测试执行工具">测试执行工具</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<p>每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实践计划。同时也分享一下我自己在选择工具集合的时候考虑的点(关于每类工具如何比较它们最后做出选择我后面会慢慢补上)。在这里不会详细介绍每种工具的安装、连接和使用过程，如果后面有时间我会专门写这些工具的安装、配置和配合使用。
+O
+首先列出我认为在项目管理中比较重要的工具，同时这些也是我在实践中用得比较多的一套工具集：</p>
+
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>职责</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>git</td>
+<td></td>
+<td>网上有个在线教程很好<a href="http://git-scm.com/book">《pro git》</a><a href="http://git.oschina.net/progit/">中文版</a></td>
+</tr>
+
+<tr>
+<td>gerrit</td>
+<td>代码库服务器工具/代码审核工具</td>
+<td>基于git的在线代码审查工具，围绕它建立代码审核平台和流程</td>
+</tr>
+
+<tr>
+<td>gitlab</td>
+<td>版本库展示平台</td>
+<td>gitlab这里只作为代码展示平台和最终的发布代码库</td>
+</tr>
+
+<tr>
+<td>jenkins</td>
+<td>自动化持续集成平台</td>
+<td>jenkins自动测试/集成/发布，围绕它建立可持续集成平台</td>
+</tr>
+
+<tr>
+<td>redmine</td>
+<td>任务管理平台/缺陷跟踪平台</td>
+<td></td>
+</tr>
+
+<tr>
+<td>sonar</td>
+<td>代码质量报告聚合工具</td>
+<td>围绕它搭建一个代码质量监控平台</td>
+</tr>
+</tbody>
+</table>
+
+<p>关于上面工具的安装过程不做描述，不过个人建议可以把每个服务都做成<a href="http://www.docker.com/">docker</a>容器，这样如果需要再次搭建环境就方便了。</p>
+
+<p>下面对这套工具集合的流程介绍
+<!-- more --></p>
+
+<h2 id="工具流程">工具流程</h2>
+
+<h3 id="整理流程">整理流程</h3>
+
+<p>{% plantuml %}
+    ACTOR 开发人员
+    control gerrit
+    control jenkins
+    ACTOR 审核人员
+    database sonar
+    database gitlab
+    control redmine</p>
+
+<pre><code>开发人员-&gt;gerrit: 提交代码审核
+gerrit-&gt;jenkins: 触发持续集成测试
+jenkins-&gt;jenkins: 执行集成测试
+jenkins-&gt;sonar: 收集代码质量报告
+gerrit&lt;--jenkins: 返回测试结果
+gerrit-&gt;审核人员: 通知人工审核
+gerrit&lt;--审核人员: 人工审核反馈
+gerrit-&gt;gerrit: 验证代码审核结果/代码合并
+gerrit-&gt;gitlab: 合并的代码提交到gitlab
+gitlab-&gt;redmine: 自动更新redmine的缺陷
+开发人员&lt;--gerrit: 通知开发人员审核结果
+</code></pre>
+
+<p>{% endplantuml %}</p>
+
+<h3 id="gerrit代码审查流程">gerrit代码审查流程</h3>
+
+<p><img src="http://p6o5lixut.bkt.clouddn.com/blog/gerrit-workflow.png" alt="gerrit审查流程" /></p>
+
+<h2 id="选择工具的思考">选择工具的思考</h2>
+
+<p>首先要明确一点：不论多么智能的工具，都是为我们程序员服务的，只是为我们提供一个更好工作的环境，让我们可以更愉快的coding。所以在选择一个项目的基础平台环境时，一定要考虑到项目团队的人员情况。</p>
+
+<pre><code>* 平台工具集可以引导团队成员不断提高自己
+* 方便团队任务分配、跟踪
+* 团队成员可以随时随地，在自己想看代码的时候方便得到
+* 代码质量可视化、可跟踪
+* 一切和编码不相关的内容，尽量自动化
+* 可持续集成
+* 方便文档的编写
+</code></pre>
+
+<p>同时在项目中哪些方面是需要引入工具的呢？这个答案在每一个团队都会不一样，这里写一些我自己的想法：</p>
+
+<pre><code>* 代码管理环境
+* 任务/缺陷管理环境
+* 自动化测试/持续集成环境
+* 代码质量监控环境
+* 文档编辑环境
+* 协作/沟通环境
+* 集成开发环境
+</code></pre>
+
+<p>下面我会对这几方面的工具进行一个简单的考量，说明我自己在这方面的考虑点，但是不会做非常细致的比较，原因有2个：
+1. 有很多工具我自己也没有亲身使用过；
+2. 每个人或团队对工具的思考都会不同，同时网上有很多的关于它们比拼的文章，最重要的是自己的使用感受和思考</p>
+
+<h2 id="代码管理环境">代码管理环境</h2>
+
+<p>代码版本库的管理我相信这个大家都会用工具来管理（如果你还没有使用版本库管理或者还在自己手动管理，我只能呵呵。。。了）。对于不同的版本控制需求，我们需要不同的管理策略，当然这个和团队的协作方式有很大的关系。同时现在的代码版本管理工具也很多：VSS、SVN、GIT、CVS(完全可以用SVN代替)、ClearCase等。那对于代码管理环境需要考虑那些因素：
+    * 安全性(如果你是开源的忠诚粉丝，可以完全忽略这个)
+    * 易用性
+    * 总体成本
+    * 技术支持
+    * 周边产品（衍生工具/其他产品集成工具）
+    * 是否离线操作（这个这里作为考虑条件是因为网络有时确实是一个坑,不解释）
+    * 支持代码审查</p>
+
+<p>这里我主要比较了git和svn。VSS支持平台有限（感觉只有win）果断干掉（我不好意思让兄弟们把mac换成win吧，呵呵。。。）；ClearCase看到网上介绍感觉功能很强大的，但是看了一下价格果断干掉（原因不要深究。。。）。</p>
+
+<h3 id="git">GIT</h3>
+
+<p>git这个现在很火，用的人很多，包括我自己现在也是完全使用这个。</p>
+
+<ul>
+<li><p>安全性</p>
+
+<ul>
+<li>使用这个可以说你的代码都没有什么安全性了(一些专业的git服务器除外)，他对安全性的控制你完全可以忽略。这个也没有办法，谁让他的作者就是开源狂热份子呢</li>
+<li>由于他们分布式管理方式，任何一个开发人员本地都有一份完整的代码库克隆，所以任何一个人员或服务器损坏了，也不会对开发有任何影响，同时找回来也是非常方便的，基本不用成本</li>
+</ul></li>
+
+<li><p>易用性</p>
+
+<ul>
+<li>这个可能就要因人而已了，如果之前对命令行的模式比较熟悉，那这个基本上就没有任何学习曲线了，只是自己的命令集合里面多了一个叫git的命令而已；但是对于之前比较习惯图形界面的童鞋就有学习成本了(实际上从我和兄弟们的使用情况来看，其实不是学习git命令花费时间，而是要让自己习惯命令行工作方式)，不过成本其实是很低的，比如我们团队的兄弟们在一周之内都实用的很溜了(这里给兄弟们赞一个)。</li>
+<li>后面就是关于分支的管理、合并、冲突的解决等协作方面的问题，这个从我个人的使用来看问题基本不大，只要把网上的那本<a href="http://git-scm.com/book">《pro git》</a>跟着操作完成，你能需要遇到的问题基本OK了。</li>
+<li>最后就是规划团队的代码管理流程了，让代码版本管理在团队不断扩大、项目越来越多的过程中不至于失控</li>
+<li>还有一个不经常会用到的操作，就是迁移代码库。这个对于git来说就太容易了，就是2、3个命令的事</li>
+</ul></li>
+
+<li><p>总体成本</p>
+
+<ul>
+<li>因为是开源的，所以从软件费用来说是0成本</li>
+<li>剩下的就是我们自己搭建服务器的成本了，如果感觉自己服务器也不想出，那就找网上的云服务就好了，所以这个成本也是相对叫低的了。这里列举几个我用过的：<a href="http://github.com">github</a>、<a href="http://coding.net">coding.net</a>、<a href="http://git.oschina.net/">Git@OSC</a>具体谁更适合你，都去用一边就好了</li>
+<li>最后就是团队的学习成本了，从我在易用性里面介绍，我感觉一个团队学习的成本不会超过1周</li>
+<li>同时git的周边产品大多都是免费的或者提供免费版本，所以他的配套产品成本其实很低</li>
+</ul></li>
+
+<li><p>技术支持</p>
+
+<ul>
+<li>开源的东西就只有社区，这个不要想太多，任何东西都需要你自己去发现，当然如果你选择三方平台，他们会有服务器平台部分支持的</li>
+</ul></li>
+
+<li><p>周边产品</p>
+
+<ul>
+<li>现在基于git的衍生产品太多了，上面所列举的都是，随便baidu和google都是一大把</li>
+<li>其他平台对于git的支持我个人感觉很不错，不论是IDE、持续集成环境、bug跟踪系统都有响应的插件支持git版本库</li>
+</ul></li>
+
+<li><p>离线操作</p>
+
+<ul>
+<li>这个离线操作也是我之前考虑使用它的一个重要原因，每个人只需要在本地编写好、提交好你的代码，然后找一个网络环境的地方，把代码同步一下就好了</li>
+</ul></li>
+</ul>
+
+<h3 id="svn-有这个没有必要cvs了">SVN(有这个没有必要CVS了)</h3>
+
+<p>svn现在用的团队很多，是一种集中式版本管理工具，我之前也是用这个很长一段时间。</p>
+
+<ul>
+<li><p>安全性</p>
+
+<ul>
+<li>svn的目标就管理团队代码，所以可以很精确的控制每个人远能访问的权限，目录分支等</li>
+<li>由于是集中式管理，所以svn服务器千万不能挂掉，如果挂了大家都不能工作了，同时找回代码也是一件费劲的事情</li>
+</ul></li>
+
+<li><p>易用性</p>
+
+<ul>
+<li>svn提供图形化客户端(非linux系统)，所以大家看一下就可以使用了</li>
+<li>svn分支、合并、冲突解决都是图形化操作，大家用起来问题不大</li>
+<li>大家都习惯了图形操作的方式，所以学习很快</li>
+<li>但是在团队不断变大、项目越来越多的时候，对svn的管理就需要有点技巧了</li>
+</ul></li>
+
+<li><p>总体成本</p>
+
+<ul>
+<li>svn软件本身是免费的，所以软件本身费用是0成本</li>
+<li>如果自己搭建服务器，那就需要服务器成本了，不过你可以选择网上云服务，如<a href="http://code.google.com">google代码库</a>（国内的就别想了）、<a href="http://www.svnchina.com/">svn china</a>、<a href="https://riouxsvn.com/">RiouxSVN</a>等。因为我自己以前只使用过google，所以对这些云服务需要自己去体验了</li>
+<li>团队学习我们忽略吧</li>
+<li>svn的目标毕竟是代替老牌的cvs，周边产品的支持那是杠杠的，其他和软件开发相关的环境和平台，肯定都是支持svn的，如果你选择的基础环境工具中还有不支持svn的，那肯定是你出问题了。但是很多优秀svn的周边产品都是需要收费的</li>
+</ul></li>
+
+<li><p>技术支持</p>
+
+<ul>
+<li>社区绝对是一个神奇的存在，你遇到的问题，肯定有人解决了，至少我当时是这样的</li>
+<li>同时可以买专业的svn产品，这样可以得到专业团队的技术支持，当然这个成本肯定是有的</li>
+</ul></li>
+
+<li><p>周边产品</p>
+
+<ul>
+<li>刚刚就说了它的目标是代替老牌的cvs，所以周边产品自然不用说，只是成本的问题</li>
+</ul></li>
+
+<li><p>离线操作</p>
+
+<ul>
+<li>这个是我当时最郁闷的一点，如果你没有网络，你就不能提交了。很不好做历史记录管理</li>
+</ul></li>
+</ul>
+
+<h3 id="git服务器">git服务器</h3>
+
+<p>这里只介绍git版本库管理中其他的思考。只介绍git是因为我现在使用的git，其实是之前在使用svn的时候没有考虑那么多，自己也没有好好去研究svn的一套体系。</p>
+
+<p>要使用git作为团队代码管理，就需要git服务器（当然对那些单兵作战的兄弟们，最好也有一个git服务器，这样至少可以做到你在哪里都可以作战）。这里git服务器的选择就有两种方式了：1、使用三方托管平台；2、自己搭建git服务器。这里主要讨论第2种方式，自家搭建服务器。</p>
+
+<p>git是基于ssh的，所以如果不要复杂功能只需要一个git-shell就可以是服务器了，不过我们可不想重复找轮子，别人已经弄好的工具，我们为什么不直接用呢！！！<a href="https://github.com/res0nat0r/gitosis">Gitosis</a>、 <a href="https://github.com/sitaramc/gitolite">Gitolite</a>（这个东西的权限管理很不错）等。如果要高级功能的(如：web访问)，那<a href="https://about.gitlab.com/gitlab-com/">gitlab</a>和<a href="http://gerrit-releases.storage.googleapis.com/index.html">gerrit</a>（下载需要翻墙）将是不二之选。这里我同时选用了2者，它们的不同在于gerrit是一个更偏向代码审查工具和权限控制。虽然gitlab也可以做代码审查，但是gerrit是做提交前审查，同时对代码权限的控制更细力度；而gitlab是代码提交后审查，同时必须有开发人员手动发起审查，不能自动发起审查操作。这导致他们两个的操作流程有很大区别。我个人更倾向于gerrit的方式，这样可以强迫大家把自己的代码质量提上去，所以我这里选择了两者结合，gerrit这里做权限和质量把控，gitlab做为集成测试和发布版本库。</p>
+
+<h2 id="任务-缺陷管理环境">任务/缺陷管理环境</h2>
+
+<p>缺陷跟踪系统redmine、Bugzilla、BugZero、Trac、jira、trello、bugfree、禅道、coding.net等，现在不论是收费的还是免费的都有很多，我相信任何一个都能解决bug跟踪问题。从我的使用过程中发现这些系统都有各自的有点，同时也有很多不足的地方，最终一个工具是不是符合你们团队，只有试用过才知道。以下是我在使用过程中发现的一些特点，感觉如果从这些点出发去试用和思考一个系统或工具，可以很快判断这个系统或工具是否适合团队，里面有些特性是我使用过的工具里面都没有的，但是这些特点我感觉确实很有用：</p>
+
+<ul>
+<li>跨平台客户端（现在大多是web，这个大部分都满足）</li>
+<li>可以和其他种类系统集成（如：代码库，测试平台、持续集成环境等）</li>
+<li>界面易操作性</li>
+<li>多项目管理</li>
+<li>自定义流程</li>
+<li>当然成本决定算一个</li>
+<li>系统更新速度</li>
+<li>支持多种开发模式</li>
+<li>分级统计功能</li>
+<li>移动端支持</li>
+</ul>
+
+<h2 id="持续集成环境">持续集成环境</h2>
+
+<p>持续集成环境对团队和项目的自动化有一定要求，同时可以也是对团队自动化的一种推进；同时对团队的开发流程和编码风格都会有推动作用。当然至于用什么工具那是其次的，总点是要让团队养成持续集成的习惯和节奏。</p>
+
+<p>持续集成至应该做到一下几点：</p>
+
+<ul>
+<li>自动构建：要求无人值守，如果人工来操作，那就没有持续集成的必要了</li>
+<li>发现版本库的变更：通过轮询或者定时，或者程序员使用命令，处罚持续集成发现版本库的变更</li>
+<li>反馈机制：在出现问题时，能及时的把问题反馈给正确的人（提交者、测试者、管理者）</li>
+<li>回滚：在出现问题后，拥有回滚到可交付的能力</li>
+<li>纯净的构建环境：每一次都应该把之前的环境删除干净，让每一次构建都是一个新的构建</li>
+<li>完善的集成功能：代码的测试，审查都应该做到完善。如果单纯的利用它做持续的编译，那就是大材小用了</li>
+<li>为了避免每次过多出现问题的构建，开发者在提交代码的时候，最好在本地独立的构建一次。可以自行运行构建脚本，模拟构建</li>
+<li>由于数据库与编码的分离，最好把数据库相关的DDL\DML等脚本一起放入版本库中，这样CI进行构建的时候，可以连同数据库一起重新构建</li>
+<li>能和我们的代码管理库、任务/缺陷跟踪等其他平台交互</li>
+</ul>
+
+<p>推荐书籍《持续集成：软件质量改进和风险降低之道》</p>
+
+<p>集成工具：<a href="http://jenkins-ci.org/">jenkins</a>（前身是<a href="http://hudson-ci.org/">Hudson</a>）、gitlab-ci、<a href="http://continuum.apache.org/">Apache Continuum</a>、<a href="http://">CruiseControl</a>、<a href="http://luntbuild.javaforge.com/">Luntbuild</a>、<a href="http://">drone</a>、<a href="http://">shippable</a></p>
+
+<p>集成的配置是必不可少的，就是让你定义如何集成构建的构建脚本啦，如果没有一个可配置的构建过程，那持续集成从何说起呢。<a href="http://">ant</a>、<a href="http://">maven</a>、<a href="http://">gradle</a>、<a href="http://">make</a>、<a href="http://">shell</a></p>
+
+<p>由于集成是基于测试之上的，所以一个好的测试工具比不可少，但是这个和团队使用的语言息息相关，每中语言都有自己的测试工具。简单举例已达到抛砖引玉的效果：各种Unit（<a href="http://">Junit</a>，<a href="http://">HtmlUnit</a>，<a href="http://">cppUnit</a>，<a href="http://">SQLUnit</a>等）、<a href="http://">karma</a>、<a href="http://">mocha</a>。。。（手软&gt;_&lt;）</p>
+
+<p>自动代码审查是提高代码质量，养成代码习惯比可少的，同时这些事情可以自动的做掉，可以让我们更加关注于我们的代码
+<a href="http://">checkstyle</a>、<a href="http://">javaNcss</a>、<a href="http://">PMD</a>、<a href="http://www.redhillconsulting.com.au/products/simian/">siminan</a>、<a href="http://">jsHint</a>、<a href="http://">jsLint</a>、<a href="http://">Emma</a>。。。</p>
+
+<p>集成反馈和报告这个可以让我们可以实时得到集成结果，失败快速找原因，成功我们就可以安心睡觉了。邮件通知、<a href="http://www.jabber.org/">Jabber</a>、<a href="http://siliconforks.com/jscoverage/">JSCoverage</a>、<a href="http://">GCOV</a>、<a href="https://pypi.python.org/pypi/coverage">python coverage</a>、<a href="http://">JCoverage</a>、<a href="http://">Cobertura</a>。。。</p>
+
+<h2 id="代码质量监控环境">代码质量监控环境</h2>
+
+<p>代码质量监控平台其实就是让我们的代码质量可视化、可管理，让我们的代码质量形成历史记录。同时可以非常方便的工全部人员查看。</p>
+
+<ul>
+<li>质量可视化</li>
+<li>跟踪质量走向（需要历史记录）</li>
+<li>可以自动从持续集成环境、代码审查中搜集质量信息</li>
+<li>可以和代码管理环境打通，这个的目的是最好能看到每个人代码质量</li>
+<li>可以和其他工程管理工具打通</li>
+</ul>
+
+<p><a href="http://www.sonarqube.org/">SonarQube</a>、前面介绍的自动代码审查工具</p>
+
+<h2 id="文档编辑环境">文档编辑环境</h2>
+
+<p>我们的程序员往往都不喜欢写文档，你让他写文档，还不如让他写2倍的代码。但是文档确是我们项目中不可缺少的部分，那怎么让我们的程序员可以高效的写文档呢！其实我们程序员在写文档的时候，往往是被文档的格式所折磨，不能专心的写内容，从而出发对写文档的抵触情绪。所以结合以上我任务文档编写环境应该有一下几点：</p>
+
+<ul>
+<li>不用关心格式，重点在内容，格式自动</li>
+<li>能从代码中自动生成文档</li>
+<li>文档能实时共享、自动共享，像现在用的邮件、QQ之类的其实很影响心情</li>
+<li>文档格式足够简单，在写的时候要做到双手不脱离键盘最好</li>
+</ul>
+
+<p><a href="http://">markdown</a>、各种语言doc工具了（<a href="http://">jsdoc</a>、<a href="http://">javadoc</a>等）、<a href="http://">wiki</a>、<a href="http://">shpinx</a></p>
+
+<h2 id="沟通环境">沟通环境</h2>
+
+<p>上面所说的说有东西的最终目的其实都是为了解决我们协作的问题，至少是或多或少都会涉及到协作沟通问题。像现在大家用的最多的沟通工具应该变成QQ、微信之类的了吧，加上邮件、电话、各种协作平台或者其他通讯工具，但是这些工具都有一个特点：在使用的时候都会有一个长时间打断我们思维，或者需要我们专门准备一个时间去做；这些其实都会造成浪费。其实最有效的沟通就是面对面交流，所以构建一个良好的沟通环境，对我们的项目进度起着至关重要的作用：</p>
+
+<ul>
+<li>沟通资源随手可得（易于获得），可以在30秒内获得</li>
+<li>兄弟们可以采取自己认为高效的方式沟通，同时沟通方式的资源易于获得</li>
+<li>沟通历史和结果易于记录，最好能在不察觉的情况下记录起来</li>
+</ul>
+
+<h2 id="项目开发环境">项目开发环境</h2>
+
+<p>项目开发环境可以分为：工程管理工具和工程开发工具。项目开发环境每个团队都有差别，同时团队内部每个人肯定都有差异，因为它受到的影响因数最多，比如：使用语言，工作内容，个人习惯，操作系统，可能还和心情有关等。因此团队在选择项目开发环境的时候，既要根据团队的定位选定基础开发环境（工程管理工具），同时出一些选择辅助开发环境的选择指导规则；也要考虑每个成员的习惯，开放出来辅助开发环境，让每个成员可以根据自己的习惯，选择一套他自己最高效的项目开发环境集合。下面我列举我认为在选择工程管理工具和工程开发工具应该具备的几点特征：</p>
+
+<h3 id="工程管理工具">工程管理工具</h3>
+
+<ul>
+<li>可以和工程开发工具高效集成</li>
+<li>可以测试</li>
+<li>可以做质量检查</li>
+<li>可以和质量管理系统集成</li>
+</ul>
+
+<p>ant，maven，gradle，gulp，grunt，make，cmake。。。</p>
+
+<h3 id="项目开发工具">项目开发工具</h3>
+
+<p>项目开发工具也叫做集成开发环境，很多集成开发环境都带有自己的工程管理工具</p>
+
+<ul>
+<li>可以和代码管理工具集成</li>
+<li>测试必须</li>
+<li>可以做本地质量检查</li>
+<li>可以方便实现重构手法，关于重构推荐《重构：改变既有代码设计》</li>
+<li>最好能和缺陷跟踪系统集成</li>
+<li>可以和工程管理工具集成</li>
+</ul>
+
+<p><a href="http://">eclipse</a>、<a href="http://">webstorm</a>、<a href="http://">vs</a>、<a href="http://">idea</a>等</p>
+
+<h2 id="需求-产品管理环境">需求/产品管理环境</h2>
+
+<p>对于需求/产品管理环境我自己现在还没有在具体项目中实践过，所以这里就不在阐述了，如果你有好的想法可以给我留言，或者给我连接地址，我连接过去</p>
+
+<h2 id="测试管理环境">测试管理环境</h2>
+
+<p>测试管理环境其实应该在持续集成环境里面，但是由于上面写持续集成环境的时候过于偏向开发人员的使用角度介绍了，并且这两套系统确实也是独立存在的。这个测试管理环境更多面向于测试人员，而我认为测试工具本身也是分为测试管理工具和测试执行工具两类别，所以我会从测试管理和测试执行两个方面来说我观点（这里的划分是按照工具的分类划分，并不是按照软件方法的方式划分），同时对于测试我想后面会有专门的一篇文章来介绍，所以这里就这样了，大家见谅我的不专业</p>
+
+<h3 id="测试管理工具">测试管理工具</h3>
+
+<p>测试管理我认为比较重要的是：测试计划，测试用例，测试跟踪，缺陷管理(这个和<a href="#任务/缺陷管理环境">任务/缺陷管理环境</a>一样)</p>
+
+<ul>
+<li>可以管理测试计划</li>
+<li>可以管理测试用例</li>
+<li>可以跟踪每个测试用例的状态</li>
+<li>可以和缺陷系统集成</li>
+<li>可以和持续集成系统集成</li>
+</ul>
+
+<p><a href="http://">QC(Quality Center)</a>，<a href="http://">TestLink</a>，<a href="http://">oKit</a>，<a href="http://">TD（TestDirector）</a>上面提到的缺陷管理系统</p>
+
+<h3 id="测试执行工具">测试执行工具</h3>
+
+<p>测试执行的方式都很多了，并且测试执行种类也很多，比如：自动化测试，性能测试，安全测试，白盒测试等。这里面不同的测试方式所使用的工具都是不一样的：</p>
+
+<p><a href="http://">selenium</a>，<a href="http://">jmeter</a>，<a href="http://">jprofile</a>，<a href="http://">Wireshark</a>，<a href="http://">AppCan</a>，<a href="http://">Metasploit</a>，<a href="http://">Nmap</a>，<a href="http://">Acunetix</a>，<a href="http://">Burp Suite</a>，<a href="http://">apache ab</a>，<a href="http://">Gatling</a></p>
+
+<p>还是那句话工具只能给我们提供一个更专心、更快速做事的环境，但是最终这个事情能不能做成、能不能做好完全是取决我们自己。所以不论使用任何工具都行，前提是我们有自己提高的意识和习惯，比如：编码风格、编程习惯、测试习惯、重构习惯、沟通能力、协作能力等，这些才是真真决定项目成败的关键。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Threeq</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-04</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/jenkins/">jenkins</a>
+          
+          <a href="/tags/gerrit/">gerrit</a>
+          
+          <a href="/tags/gitlab/">gitlab</a>
+          
+          <a href="/tags/redmine/">redmine</a>
+          
+          <a href="/tags/ci/cd/">CI/CD</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/git-branch-flow/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Git 代码库分之管理</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/web/css3-added-selector/">
+            <span class="next-text nav-default">CSS3 新增选择器</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+    <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2018-04-04 00:00:00 \x2b0000 UTC',
+    title: '项目持续集成工具',
+    link: decodeURI(location.href),
+    desc: '每个项目管理中都有自己的管理工具集合，这里分享一下我用过的工具集合，这里面有些工具的实践时间可能并不是很长时间，列在这里意味这下一个阶段的实',
+    owner: 'threeq',
+    repo: 'threeq.github.com',
+    oauth: {
+      client_id: '528a87f68b6657ea5531',
+      client_secret: 'bc161e4e6275f34d6d88d798ba1bfe9255d828e4'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:threeq@foxmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/threewq" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/three3q" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E5%88%A9%E5%B9%B3-%E7%8E%8B-44560292/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/threeq" class="iconfont icon-github" title="github"></a>
+  <a href="http://threeq.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Threeq</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
