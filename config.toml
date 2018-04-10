@@ -1,7 +1,7 @@
 baseURL = "http://threeq.me/"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-cn"         # en / zh-cn / ... (This field determines which i18n file to use)
-title = "Threeq - 傻傻程序员"
+title = "Threeq - 出井的青蛙"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "even"
@@ -64,7 +64,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   dateFormatToUse = "2006-01-02"
 
   # show word count and read time ?                       # 是否显示字数统计与阅读时间
-  moreMeta = false
+  moreMeta = true
 
   # 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
   # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
