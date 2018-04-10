@@ -5,3 +5,7 @@
 	path = threeq.github.com
 	url = git@github.com:threeq/threeq.github.com.git
 	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:threeq/threeq.github.com.git
+	branch = master
