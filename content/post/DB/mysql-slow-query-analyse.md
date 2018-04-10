@@ -24,9 +24,36 @@ toc: true
 
 ### mac 安装
 
+可以使用 `brew` 直接安装
+
+```shell
+brew install percona-toolkit
+```
+
 ### Linux 安装
 
-### windows 安装
+详细信息参考 [官方安装文档](https://www.percona.com/doc/percona-toolkit/LATEST/installation.html)
+
+### 源码安装
+
+```
+# 下载源码
+wget https://www.percona.com/downloads/percona-toolkit/3.0.8/source/tarball/percona-toolkit-3.0.8.tar.gz
+
+# 解压
+tar xf percona-toolkit-3.0.8.tar.gz
+
+#进入目录安装
+cd percona-toolkit-3.0.8
+
+#开始编译安装
+perl Makefile.PL   
+make   
+make install
+
+#安装完了就有命令了
+ll /usr/local/bin/pt-*
+```
 
 # pt-query-digest 基本使用
 
