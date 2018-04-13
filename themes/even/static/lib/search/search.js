@@ -11,15 +11,15 @@ function initLunr() {
 
     var lunrIndex, pagesIndex;
 
-    lunr.trimmer = function (token) {
-        //check token is chinese then not replace 
-        if(isChineseChar(token)){
-            return token;
-        }
-        return token
-            .replace(/^\W+/, '')
-            .replace(/\W+$/, '')
-    }
+    // lunr.trimmer = function (token) {
+    //     //check token is chinese then not replace 
+    //     if(isChineseChar(token)){
+    //         return token;
+    //     }
+    //     return token
+    //         .replace(/^\W+/, '')
+    //         .replace(/\W+$/, '')
+    // }
 
     function isChineseChar(str){     
        var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;  
