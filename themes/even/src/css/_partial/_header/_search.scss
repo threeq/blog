@@ -1,0 +1,15 @@
+// ==============================
+// Search
+// =============================
+
+.search-wrapper {
+  	position: absolute;
+    right: 45px;
+    bottom: 0;
+}
+
+@include max-screen() {
+  .logo-wrapper {
+    display: none;
+  }
+}

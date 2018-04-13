@@ -1,0 +1,28 @@
+<div class="logo-wrapper">
+  <a href="{{ "/" | relLangURL }}" class="logo">
+    {{- if .Site.Params.logoTitle -}}
+      {{ .Site.Params.logoTitle }}
+    {{- else -}}
+      {{ .Site.Title }}
+    {{- end -}}
+  </a>
+</div>
+
+{{- if not .Site.Params.disableSearch}}
+<div class="search-wrapper">
+  <link href="{{"lib/search/auto-complete.css" | relURL}}" rel="stylesheet">
+  <div class="searchbox">
+    <input data-search-input id="search-by" type="text" placeholder="{{T "Search-placeholder"}}">
+  </div>
+</div>
+{{- end}}
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    {{ range .Site.Menus.main -}}
+      <li class="menu-item">
+        <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+      </li>
+    {{- end }}
+  </ul>
+</nav>
