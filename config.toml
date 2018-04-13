@@ -81,9 +81,9 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   changyanAppid = ""        # Changyan app id             # 畅言
   changyanAppkey = ""       # Changyan app key
   livereUID = ""            # LiveRe UID                  # 来必力
-  baidu_push = false        # baidu push                  # 百度
+  baidu_push = true        # baidu push                  # 百度
   baidu_analytics = "f41002d6e998a01c98f9bf3602899e53"      # Baidu Analytics
-  baidu_verification = ""   # Baidu Verification
+  baidu_verification = "qSdYtSzFbG"   # Baidu Verification
   google_verification = ""  # Google_Verification         # 谷歌
 
   # Link custom CSS and JS assets
