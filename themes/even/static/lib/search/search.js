@@ -13,18 +13,34 @@ function initLunr() {
 
     // lunr.trimmer = function (token) {
     //     //check token is chinese then not replace 
-    //     if(isChineseChar(token)){
-    //         return token;
+    //     if(!isChineseChar(token.str)){
+    //         token.str = token.str
+    //             .replace(/^\W+/, '')
+    //             .replace(/\W+$/, '');
     //     }
-    //     return token
-    //         .replace(/^\W+/, '')
-    //         .replace(/\W+$/, '')
+        
+    //     return token;
     // }
+    lunr.zh = function() {
+      this.pipeline.reset();
+      this.pipeline.add(lunr.zh.trimmer, lunr.stopWordFilter, lunr.stemmer);
+    };
 
-    function isChineseChar(str){     
+    var isChineseChar = (function (){     
        var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;  
-       return reg.test(str);  
-    }
+       return function(str) {
+            return reg.test(str);  
+       }
+    })();
+    
+    lunr.zh.trimmer = function(token) {
+      return token.update(str => {
+        if (isChineseChar(str)) return str;
+        return str.replace(/^\W+/, "").replace(/\W+$/, "");
+      });
+    };
+ 
+    lunr.Pipeline.registerFunction(lunr.zh.trimmer, "trimmer-zh");
 
     // First retrieve the index file
     $.getJSON(baseurl +"index.json")
@@ -33,6 +49,8 @@ function initLunr() {
             // Set up lunrjs by declaring the fields we use
             // Also provide their boost level for the ranking
             lunrIndex = lunr(function () {
+                this.use(lunr.zh);
+
                 this.ref("uri");
                 this.field('title', {
                     boost: 15
