@@ -32,7 +32,7 @@ function initLunr() {
             return reg.test(str);  
        }
     })();
-    
+
     lunr.zh.trimmer = function(token) {
       return token.update(str => {
         if (isChineseChar(str)) return str;
@@ -99,6 +99,7 @@ function initLunr() {
                         return '<div class="autocomplete-suggestion" ' +
                             'data-term="' + term + '" ' +
                             'data-title="' + item.title + '" ' +
+                            'title="' + item.title + '" ' +
                             'data-uri="'+ item.uri + '" ' +
                             'data-context="' + item.context + '">' +
                             '» ' + item.title +
