@@ -85,6 +85,8 @@ function initLunr() {
                 var searchList = new autoComplete({
                     /* selector for the search box element */
                     selector: $("#search-by").get(0),
+                    minChars: 2,
+                    delay: 300,
                     /* source is the callback to perform the search */
                     source: function(term, response) {
                         response(search(term));
