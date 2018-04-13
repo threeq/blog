@@ -1,4 +1,4 @@
-baseURL = "http://threeq.me/"
+baseURL = "/"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-cn"         # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Threeq - 出井的青蛙"
@@ -69,7 +69,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   # 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
   # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
   toc = true                                                                            # 是否开启目录
-  autoCollapseToc = false   # Auto expand and collapse toc                              # 目录自动展开/折叠
+  autoCollapseToc = true   # Auto expand and collapse toc                              # 目录自动展开/折叠
   fancybox = true           # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
   mathjax = false           # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
   mathjaxEnableSingleDollar = false                                                     # 是否使用 $...$ 即可進行inline latex渲染
@@ -90,6 +90,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   #   (relative to /static/css and /static/js respectively)
   customCSS = []
   customJS = []
+
+  disableSearch = false
 
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
     enable = false
@@ -142,7 +144,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
 # 将下面这段配置取消注释可以使 hugo 生成 .md 文件
 # Uncomment these options to make hugo output .md files.
-#[mediaTypes]
+[mediaTypes]
 #  [mediaTypes."text/plain"]
 #    suffix = "md"
 #
@@ -151,8 +153,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 #  isPlainText = true
 #  isHTML = false
 #
-#[outputs]
-#  home = ["HTML", "RSS"]
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
 #  page = ["HTML", "MarkDown"]
 #  section = ["HTML", "RSS"]
 #  taxonomy = ["HTML", "RSS"]
