@@ -52,13 +52,13 @@ function initLunr() {
                 this.use(lunr.zh);
 
                 this.ref("uri");
-                this.field('title', {
+                this.field('title_s', {
                     boost: 15
                 });
                 this.field('tags', {
                     boost: 10
                 });
-                this.field("content", {
+                this.field("content_s", {
                     boost: 5
                 });
 
