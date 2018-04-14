@@ -22,6 +22,13 @@
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  {{- if (and .Site.Params.Search.Enable (eq .Site.Params.Search.type "algolia")) }}
+  <span class="division">|</span>
+  <span class="theme-info">
+    <img src="https://www.algolia.com/assets/pricing_new/algolia-powered-by-ac7dba62d03d1e28b0838c5634eb42a9.svg" alt="Algolia powered by">
+  </span>
+  {{- end }}
+
   {{ if .Site.Params.busuanzi.enable -}}
   <div class="busuanzi-footer">
     {{ $spinner := "img/spinner.svg" | relURL -}}

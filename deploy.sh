@@ -2,9 +2,17 @@
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
+fail() {
+	echo "$1"
+	exit 1
+}
+
 # Build the project.
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
-python2 algolia_push.py 
+echo "search key $1"
+searchKey="$1"
+python2 search_process.py -k "${searchKey}" || fail "site search data process fail. Error Code: [ $? ]"
+
 
 # Go To Public folder
 cd public
