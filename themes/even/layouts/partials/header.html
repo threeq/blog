@@ -8,13 +8,19 @@
   </a>
 </div>
 
-{{- if not .Site.Params.disableSearch}}
+{{- if .Site.Params.Search.Enable }}
+<link href="{{"lib/search/auto-complete.css" | relURL}}" rel="stylesheet">
+
 <div class="search-wrapper">
-  <link href="{{"lib/search/auto-complete.css" | relURL}}" rel="stylesheet">
   <div class="searchbox">
-    <input data-search-input id="search-by" type="text" placeholder="{{T "Search-placeholder"}}">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="{{T "Search-placeholder"}}"
+       spellcheck='false' type='text'>
+    </div>
   </div>
 </div>
+
 {{- end}}
 
 <nav class="site-navbar">

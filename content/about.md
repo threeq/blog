@@ -7,7 +7,7 @@ url: "/about/"
 
 # Threeq - 出井的青蛙
 
-{{% figure class="center" src="/images/author/logo.svg" alt="svg" width="128px"%}}
+{{% figure class="center" src="/images/author/logo.png" alt="logo.png" width="128px"%}}
 
 快乐的程序员、老司机。
 
@@ -19,7 +19,7 @@ url: "/about/"
 
 常用语言 `Java`、`Python`、`Golang`、`Javascript`
 
-目前正在实践 `Scrum` + `看板` + `领域驱动设计（DDD）`
+目前正在实践 `Scrum` + `看板` + `领域驱动设计（DDD）` + `微服务`
 
 目前正在学 `习机器学习（ML）`、`分布式系统架构设计`、`k8s 技术栈`
 

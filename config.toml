@@ -91,7 +91,12 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   customCSS = []
   customJS = []
 
-  disableSearch = false     # 搜索框是否可用
+  [params.Search]
+    enable = true
+    type = 'algolia'  # lunr 或 algolia
+    index = 'blog.threeq.me'
+    appID = 'NIACONWTKJ'
+    searchKey = 'c8c3a0133e86a6e130912f4f1acdf54c'
 
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
     enable = false

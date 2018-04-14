@@ -5,7 +5,6 @@
   {{ .Site.Params.publicCDN.slideout | safeHTML }}
   {{ if .Site.Params.fancybox }}{{ .Site.Params.publicCDN.fancyboxJs | safeHTML }}{{ end }}
 {{- else -}}
-  <script type="text/javascript" src="{{ "lib/jquery/jquery-3.2.1.min.js" | relURL }}"></script>
   <script type="text/javascript" src="{{ "lib/slideout/slideout-1.0.1.min.js" | relURL }}"></script>
   {{ if .Site.Params.fancybox }}<script type="text/javascript" src="{{ "lib/fancybox/jquery.fancybox-3.1.20.min.js" | relURL }}"></script>{{ end }}
 {{- end -}}
@@ -90,17 +89,28 @@
 </script>
 {{- end }}
 
-{{- if not .Site.Params.disableSearch}}
-  <script type="text/javascript">
-    {{ if .Site.IsMultiLingual }}
-        var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
-    {{ else }}
-        var baseurl = "{{.Site.BaseURL}}";
-    {{ end }}
-  </script>
-  <script type="text/javascript" src="{{"lib/search/lunr.js" | relURL}}"></script>
-  <script type="text/javascript" src="{{"lib/search/auto-complete.js" | relURL}}"></script>
-  <script type="text/javascript" src="{{"lib/search/search.js" | relURL}}"></script>
+{{- if .Site.Params.Search.Enable }}
+  {{- if (eq .Site.Params.Search.type "lunr") }}
+    <script type="text/javascript">
+      {{ if .Site.IsMultiLingual }}
+          var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
+      {{ else }}
+          var baseurl = "{{.Site.BaseURL}}";
+      {{ end }}
+    </script>
+    <script type="text/javascript" src="{{"lib/search/lunr/lunr.js" | relURL}}"></script>
+    <script type="text/javascript" src="{{"lib/search/lunr/auto-complete.js" | relURL}}"></script>
+    <script type="text/javascript" src="{{"lib/search/lunr/search.js" | relURL}}"></script>
+  {{- else }}
+    <script type="text/javascript">
+      var lagoliaIndex = "{{.Site.Params.Search.index}}"
+      var lagoliaAppID = "{{.Site.Params.Search.appID}}"
+      var lagoliaSearchKey = "{{.Site.Params.Search.searchKey}}"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="{{"lib/search/algolia/search-bar.js" | relURL}}"></script>
+  {{- end}}
 {{- end}}
 
 <!-- custom js -->

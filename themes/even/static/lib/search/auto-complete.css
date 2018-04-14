@@ -1,4 +1,14 @@
+#inputfield input:focus {
+    width: 360px;
+}
 
+#inputfield input {
+    background-color: white !important;
+}
+
+#inputfield .aa-dropdown-menu {
+    background-color: #f4f4f4;
+}
 .autocomplete-suggestions {
     text-align: left;
     cursor: default;
