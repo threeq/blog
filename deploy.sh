@@ -9,8 +9,8 @@ fail() {
 
 # Build the project.
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
-echo "search key $1"
-searchKey="$1"
+echo "search key $2"
+searchKey="$2"
 python2 search_process.py -k "${searchKey}" || fail "site search data process fail. Error Code: [ $? ]"
 
 
