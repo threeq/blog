@@ -1,7 +1,7 @@
 ---
-title: {{ replace .Name "-" " " | title }}
-date: {{ dateFormat "2006-01-02" .Date }}
-lastmod: {{ dateFormat "2006-01-02" .Date }}
+title: Agile Practice Record
+date: 2018-04-15
+lastmod: 2018-04-15
 draft: true
 keywords: []
 description: ""
@@ -30,4 +30,4 @@ sequenceDiagrams:
   options: ""
 ---
 
-## {{ .Name }}
+## agile-practice-record
