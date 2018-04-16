@@ -264,6 +264,8 @@ $ python search_process.py -k <algolia manage key> # 同时进行 Lunr 和 Algol
 $ python search_process.py --managehKey <algolia manage key> # 同时进行 Lunr 和 Algolia 处理
 ```
 
+# 加入发布流程
+
 最后我们还可以很方便和发布流程集成，比如下面的 `deploy.sh` 脚本
 
 ```
