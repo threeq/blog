@@ -1,16 +1,16 @@
 ---
-title: {{ replace .Name "-" " " | title }}
-date: {{ dateFormat "2006-01-02" .Date }}
-lastmod: {{ dateFormat "2006-01-02" .Date }}
+title: Hexagon Arch
+date: 2018-04-18
+lastmod: 2018-04-18
 draft: true
-keywords: ["Threeq", "博客", "程序员", "架构师"]
+keywords: []
+description: ""
 categories:
  - 笔记
 tags:
  - 笔记
 toc: true
 comment: true
-description: ""
 
 autoCollapseToc: false
 postMetaInFooter: false
@@ -30,4 +30,4 @@ sequenceDiagrams:
   options: ""
 ---
 
-## {{ .Name }}
+## hexagon-arch

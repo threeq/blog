@@ -1,5 +1,5 @@
 ---
-title: 敏捷开发实践：记录
+title: Scrum + 看板 开发实践：记录
 date: 2018-04-16
 lastmod: 2018-04-16
 draft: false
