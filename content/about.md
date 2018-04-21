@@ -31,7 +31,10 @@ url: "/about/"
 
 {{% /center %}}
 
-{{% figure class="center" src="/images/author/qrcode_weixin.jpg" title="扫码联系我" alt="img" width="256px"%}}
+<div>
+{{% figure class="center inline-block" src="/images/author/qrcode_weixin_mp.jpg" title="扫码关注订阅号" alt="img" width="256px" %}}
+{{% figure class="center inline-block" src="/images/author/qrcode_weixin.jpg" title="联系我" alt="img" width="256px" %}}
+</div>
 
 
 
