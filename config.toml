@@ -76,6 +76,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   postMetaInFooter = true   # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
   linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
+  linkToWeixinQrCode = '/images/author/qrcode_weixin_mp.jpg' # 文章底部微信二维码
+  linkToAuthorQrCode = '/images/author/qrcode_weixin.jpg' # 文章底部微信二维码
   contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   changyanAppid = ""        # Changyan app id             # 畅言
@@ -128,9 +130,9 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     pagePV = true
 
   [params.reward]                                         # 文章打赏
-    enable = false
-    wechat = "/images/qrcode/qrcode_8cm.jpg"           # 微信二维码
-    alipay = "/path/to/your/alipay-qr-code.png"           # 支付宝二维码
+    enable = true
+    wechat = "/images/author/reward/weixin.jpeg"           # 微信二维码
+    alipay = "/images/author/reward/alipay.jpeg"           # 支付宝二维码
 
   [params.social]                                         # 社交链接
     a-email = "mailto:threeq@foxmail.com"
