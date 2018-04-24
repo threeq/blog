@@ -30,4 +30,11 @@ sequenceDiagrams:
   options: ""
 ---
 
-## 5-query-function
+知识要点：
+
+* 计算字段(列)
+* 字符串函数
+* 数值函数、数值计算
+* 时间函数
+* 统计函数将在下次讲解
+

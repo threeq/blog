@@ -30,9 +30,9 @@
   {{- end }}
   {{ if $.Site.Params.linkToWeixinQrCode -}}
   <p class="copyright-item">
-      <a class="fancybox" href="{{ .Site.Params.linkToWeixinQrCode }}" data-fancybox="gallery" data-caption="">
+      <span class="fancybox" href="{{ .Site.Params.linkToWeixinQrCode }}" data-fancybox="gallery" data-caption="">
         <img src="{{ .Site.Params.linkToWeixinQrCode }}" alt="img" width="128px">
-      </a>
+      </span>
   </p>
   {{- end }}
 </div>

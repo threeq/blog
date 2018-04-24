@@ -30,4 +30,8 @@ sequenceDiagrams:
   options: ""
 ---
 
-## 6-query-statistics
+知识要点：
+
+* 统计函数
+* 分组统计：group by 子句
+* 过滤分组统计：having by 子句
