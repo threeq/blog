@@ -1,7 +1,7 @@
 ---
 title: 小白学 SQL 第七天：多表查询
-date: 2018-05-02
-lastmod: 2018-05-02
+date: 2018-05-04
+lastmod: 2018-05-04
 draft: false
 keywords: ["Threeq", "博客", "程序员", "架构师", "Mysql","SQL","SQL学习","数据库","select语句"]
 categories:
