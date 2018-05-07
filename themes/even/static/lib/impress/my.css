@@ -1,0 +1,8 @@
+#impress-toolbar {
+	font-size: 16px
+}
+
+#impress-toolbar select {
+	margin: 0 10px;
+	height: 28px;
+}

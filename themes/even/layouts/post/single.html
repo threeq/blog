@@ -29,7 +29,50 @@
 
     <!-- Content -->
     <div class="post-content">
-      {{ .Content }}
+      {{ if .Page.Params.pptView -}}
+      <!-- <link rel="stylesheet" type="text/css" href="/lib/impress/markdown-slides.css"> -->
+      <link rel="stylesheet" type="text/css" href="/lib/impress/classic-slides.css">
+      <link rel="stylesheet" type="text/css" href="/lib/impress/my.css">
+
+
+      <button onclick="pptstart();">开始</button>
+
+      <div id="impress-mark-bg" style="display: none; position: fixed; left: 0; top: 0; background-color: #fff;height: 100%; width: 100%;">
+        <div id="impress-wrapper" style="position: relative; overflow: hidden;height: 100%; width: 100%;">
+          <div id="impress" data-transition-duration="1000">
+            <div id="markdown" class="step slide markdown">{{ .RawContent }}</div>
+          </div>
+        </div>
+        <div id="impress-toolbar"></div>
+        <div id="impress-help"></div>
+      </div>
+      
+
+      <script type="text/javascript" src="/lib/impress/impress-extras/markdown/markdown.js"></script>
+      <script type="text/javascript" src="/lib/impress/impress.js"></script>
+      <script type="text/javascript">
+        var api;
+        var rawContent = $('#impress').html();
+        function pptstart() {
+          $('#impress').html(rawContent);
+          $('#impress-mark-bg').show();
+          api = impress();
+          api.init();
+          $("#impress-toolbar").append('<button onclick="pptclose();">关闭</button>')
+          setTimeout(function () {
+            $('#impress').focus();
+          }, 100)
+        }
+        function pptclose(argument) {
+          $('#impress-mark-bg').hide();
+          api.tear();
+        }
+        // pptstart();
+        
+      </script>
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
     </div>
 
     <!-- Copyright -->
