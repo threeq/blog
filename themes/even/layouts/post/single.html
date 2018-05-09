@@ -29,6 +29,7 @@
 
     <!-- Content -->
     <div class="post-content">
+
       {{ if .Page.Params.pptView.enable -}}
       {{ range .Site.Params.pptView.css }}
          <link rel="stylesheet" type="text/css" href="{{ . }}">
@@ -39,7 +40,13 @@
         {{ end }}
       {{ end }}
 
-      <button onclick="pptstart();">开始</button>
+      {{ .Summary }}
+      {{ if .Page.Params.pptView.startBtn }}
+        <button class="pptstart" onclick="pptstart();">{{ .Page.Params.pptView.startBtn }}</button>
+      {{ else }}
+        <button class="pptstart" onclick="pptstart();">演示</button>
+      {{ end }}
+      
 
       <div id="impress-mark-bg">
         <div id="impress-wrapper">

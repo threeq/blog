@@ -14,6 +14,7 @@ description: ""
 
 PptView: 
   enable: true
+#  startBtn: 开始演示
   attrs:
     data-transition-duration: 1000
     data-autoplay: 10

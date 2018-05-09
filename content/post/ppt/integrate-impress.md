@@ -1,19 +1,20 @@
 ---
 title: Hugo 集成 impress.js 实现播放效果
-date: 2018-05-07
-lastmod: 2018-05-07
+date: 2018-05-09
+lastmod: 2018-05-09
 draft: false
-keywords: ["Threeq", "博客", "程序员", "架构师"]
+keywords: ["Threeq", "博客", "程序员", "架构师", "Hugo", "markdown", "ppt"]
 categories:
  - 笔记
 tags:
- - 笔记
+ - hugo
 toc: false
 comment: true
-description: "ppt view demo"
+description: "impress.js 是一个使用 html 模拟 ppt 播放效果的 js 工具。将 impress.js 集成到 Hugo 主题中，可以在静态博客中快速做出演示效果，并且将精力集中在内容上，展示效果就交给 impress.js 吧。当然需要实现自定义效果也是非常方便的。"
 
 PptView: 
   enable: true
+  startBtn: 开始演示
   attrs:
     data-transition-duration: 1000
     data-autoplay: 10
@@ -24,6 +25,25 @@ PptView:
     - /post/ppt-demo/ppt-demo.js
 ---
 
+
+这是一个 Hugo Even 主题集成 impress.js 实现幻灯片效果和集成过程的演示。
+
+支持功能
+
+* 支持 markdown 语法
+* 支持 html 语法
+* 支持 css 动画
+* 支持自定义 js 交互逻辑
+
+实现依赖工具
+
+* impress.js
+* showdown.js
+* mermaid.js
+
+<!--more-->
+
+-----
 
 ---
 data-x: -1000
@@ -96,10 +116,10 @@ id: acme
   <div id="acme-graph-bottom"></div>
 </div>
 <table border="1">
-  <tr><td>Q1</td><td id="acme-q1">234€</td></tr>
-  <tr><td>Q2</td><td id="acme-q2">255€</td></tr>
-  <tr><td>Q3</td><td><input id="acme-q3" size="5" oninput="acmeDrawGraph();" />€ <small>(insert here)</small></td></tr>
-  <tr><td>Q4</td><td><input id="acme-q4" size="5" oninput="acmeDrawGraph();" />€</td></tr>
+  <tr><td>Q1</td><td id="acme-q1">￥234</td></tr>
+  <tr><td>Q2</td><td id="acme-q2">￥255</td></tr>
+  <tr><td>Q3</td><td>￥<input id="acme-q3" size="5" oninput="acmeDrawGraph();" /><small>(insert here)</small></td></tr>
+  <tr><td>Q4</td><td>￥<input id="acme-q4" size="5" oninput="acmeDrawGraph();" /></td></tr>
 </table> 
 
 <script src="/post/ppt-demo/ppt-demo.js"></script>
@@ -132,4 +152,27 @@ class: step slide markdown step-3d
 <span class="footnote">* beat that, prezi ;)</span> 
 
 -----
-# 子步骤演示
+# 子步骤演示 1
+## 多步骤显示
+
+<ul>
+  <li class="substep">Press 'P' to open a presenter console.</li>
+  <li class="substep">When you move the mouse, navigation controls are visible on your bottom left</li>
+  <li class="substep" data-mode="single">Autoplay makes the slides advance after a timeout</li>
+  <li class="substep">Relative positioning plugin is often a more convenient way to position your slides when editing. (<a href="https://github.com/impress/impress.js/blob/master/examples/classic-slides/index.html">See html for this presentation.</a>)</li>
+</ul>
+
+-----
+# 子步骤演示 2
+## 单步骤显示
+
+<ul class="single">
+  <li class="substep">Press 'P' to open a presenter console.</li>
+  <li class="substep">When you move the mouse, navigation controls are visible on your bottom left</li>
+  <li class="substep" data-mode="single">Autoplay makes the slides advance after a timeout</li>
+  <li class="substep">Relative positioning plugin is often a more convenient way to position your slides when editing. (<a href="https://github.com/impress/impress.js/blob/master/examples/classic-slides/index.html">See html for this presentation.</a>)</li>
+</ul>
+
+<div id="signle-drawing-board-demo">
+  <div class="shape"></div>
+</div>

@@ -1613,7 +1613,7 @@
               var template = element.cloneNode(false);
               setElement(element, slides[i]);
               i--;
-              while ( i >= 0 ) {
+              while ( i >= 1 ) {
                 var newElement = template.cloneNode( false );
                 setElement(newElement, slides[i]);
                 // newElement.innerHTML = markdown.toHTML( slides[ i ] );
@@ -3586,8 +3586,13 @@
     };
 
     var activeStep = null;
+    var currentStep = -1;
+    var isSingle = function() {
+        return activeStep.querySelectorAll(".single").length>0;
+    }
     document.addEventListener( "impress:stepenter", function( event ) {
         activeStep = event.target;
+        currentStep = -1;
     }, false );
 
     var substep = function( event ) {
@@ -3629,9 +3634,19 @@
     };
 
     var showSubstep = function( substeps, visible ) {
-        if ( visible.length < substeps.length ) {
+        if ( visible.length < substeps.length && currentStep<substeps.length-1) {
+            currentStep++;
             var el = substeps[ visible.length ];
-            el.classList.add( "substep-visible" );
+
+            if(isSingle(el)) {
+                if(visible.length>=1) {
+                    visible[visible.length-1].classList.remove( "substep-visible" );
+                }
+            }
+            substeps[currentStep].classList.add( "substep-visible" );
+            // el.classList.add( "substep-visible" );
+            activeStep.classList.remove('active-substep-'+(currentStep>0?currentStep-1:0))
+            activeStep.classList.add('active-substep-'+(currentStep))
             return el;
         }
     };
@@ -3640,14 +3655,24 @@
         var substeps = step.querySelectorAll( ".substep" );
         var visible = step.querySelectorAll( ".substep-visible" );
         if ( substeps.length > 0 ) {
-            return hideSubstep( visible );
+            return hideSubstep(substeps, visible );
         }
     };
 
-    var hideSubstep = function( visible ) {
-        if ( visible.length > 0 ) {
+    var hideSubstep = function(substeps, visible ) {
+        if ( visible.length > 0 && currentStep>0) {
+            currentStep--;
             var el = visible[ visible.length - 1 ];
+            
             el.classList.remove( "substep-visible" );
+            if(isSingle(el)) {
+                substeps[currentStep].classList.add( "substep-visible" );
+            }
+            
+            activeStep.classList.remove('active-substep-'+(currentStep+1))
+            if(currentStep>=1) {
+                activeStep.classList.add('active-substep-'+(currentStep))
+            }
             return el;
         }
     };
@@ -3664,6 +3689,12 @@
         for ( var i = 0; i < visible.length; i++ ) {
             visible[ i ].classList.remove( "substep-visible" );
         }
+
+        var steps = step.querySelectorAll( ".substep" )
+        for ( var i = 0; i < steps.length; i++ ) {
+            activeStep.classList.remove('active-substep-'+i);
+        }
+        
     }, false );
 
     // API for others to reveal/hide next substep ////////////////////////////////////////////////

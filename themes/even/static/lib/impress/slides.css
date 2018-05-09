@@ -191,6 +191,9 @@ body.impress-mouse-timeout {
 }
 
 /* Substep plugin */
+#impress .step .single .substep {
+    position: absolute;
+}
 #impress .step .substep {
     opacity: 0;
 }
