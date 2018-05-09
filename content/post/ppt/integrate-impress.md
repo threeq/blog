@@ -19,6 +19,9 @@ PptView:
     data-autoplay: 10
   css:
     - /lib/impress/classic-slides.css
+    - /post/ppt-demo/ppt-demo.css
+  js:
+    - /post/ppt-demo/ppt-demo.js
 ---
 
 
@@ -78,13 +81,30 @@ data-rotate: 90
 *这个有点像 ppt。需要使用 css3 动画库.*
 **如果只要 html 解析，请加入配置选项： `html: true`**
 
-
 -----
 ---
-data-rel-x: 800 
-data-rel-y: 800
-data-rotate: 60
+id: acme
 ---
+# graph 演示
+<div id="acme-graph-1">
+  <div id="acme-graph-bars">
+      <div id="acme-graph-q1" class="acme-graph-bar red" style="height: 183.529px;"></div>
+      <div id="acme-graph-q2" class="acme-graph-bar blue" style="height: 200px;"></div>
+      <div id="acme-graph-q3" class="acme-graph-bar green" style="height: 0px;"></div>
+      <div id="acme-graph-q4" class="acme-graph-bar purple" style="height: 0px;"></div>
+  </div>
+  <div id="acme-graph-bottom"></div>
+</div>
+<table border="1">
+  <tr><td>Q1</td><td id="acme-q1">234€</td></tr>
+  <tr><td>Q2</td><td id="acme-q2">255€</td></tr>
+  <tr><td>Q3</td><td><input id="acme-q3" size="5" oninput="acmeDrawGraph();" />€ <small>(insert here)</small></td></tr>
+  <tr><td>Q4</td><td><input id="acme-q4" size="5" oninput="acmeDrawGraph();" />€</td></tr>
+</table> 
+
+<script src="/post/ppt-demo/ppt-demo.js"></script>
+-----
+
 # 2
 
 ```
@@ -110,3 +130,6 @@ class: step slide markdown step-3d
   <span class="in">in</span> <b>3D<sup>*</sup></b>?
 </p>
 <span class="footnote">* beat that, prezi ;)</span> 
+
+-----
+# 子步骤演示

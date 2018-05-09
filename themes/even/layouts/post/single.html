@@ -87,6 +87,11 @@
         // pptstart();
         
       </script>
+        {{ range .Page.Params.pptView.js }}
+          {{ if . }}
+           <script src="{{ . }}"></script>
+          {{ end }}
+        {{ end }}
       {{ else }}
         {{ .Content }}
       {{ end }}

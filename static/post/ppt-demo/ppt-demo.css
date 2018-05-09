@@ -1,0 +1,51 @@
+
+#acme-graph-1 {
+    position: relative;
+    width: 367px;
+    margin-bottom: 50px;
+}
+
+#acme-graph-bottom {
+    bottom: 100px;
+    left: 440px;
+    background-color: black;
+    width: 100%;
+    height: 2px;
+}
+
+#acme-graph-bars {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.acme-graph-bar {
+    border: solid 1px black;
+    width: 70px;
+    margin-left: 10px;
+}
+
+.acme-graph-bar:last-child {
+    margin-right: 10px;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.purple {
+    background-color: purple;
+}
