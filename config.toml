@@ -73,7 +73,6 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   fancybox = true           # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
   mathjax = false           # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
   mathjaxEnableSingleDollar = false                                                     # 是否使用 $...$ 即可進行inline latex渲染
-  pptView = false           # ppt 显示模式
 
   postMetaInFooter = true   # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
   linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
@@ -94,6 +93,19 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   customCSS = ["self.css"]
   customJS = []
 
+  [params.PptView]  # ppt 显示模式
+    enable = false
+    css = [
+      "/lib/impress/impress-extras/highlight/styles/github.css",
+      "/lib/impress/impress-extras/mermaid/mermaid.forest.css",
+      "/lib/impress/impress.css",
+      "/lib/impress/slides.css",
+      "/lib/impress/impress-animate.css"
+    ]
+    [params.PptView.Attrs]
+      data-rel-x = 0
+      data-rel-y = 900
+    
   [params.Search]
     enable = true
     type = 'algolia'  # lunr 或 algolia

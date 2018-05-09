@@ -1,33 +1,32 @@
 ---
-title: 6 Data Insert Update
-date: 2018-04-21
-lastmod: 2018-04-21
+title: 小白学 SQL 第九天：查询、修改、删除数据
+date: 2018-05-07
+lastmod: 2018-05-09
 draft: true
-keywords: ["Threeq", "博客", "程序员", "架构师"]
+keywords: ["Threeq", "博客", "程序员", "架构师", "Mysql","SQL","SQL学习","数据库","create 语句"]
 categories:
- - 笔记
+ - 数据库
 tags:
- - 笔记
+ - 数据库
+ - SQL
 toc: true
 comment: true
-description: ""
-
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
+description: "数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"
 ---
 
-## 6-data-insert-update
+前面七天主要聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些数据是如何录入到数据库的？如果数据错误了需要修改或删除数据怎么操作？我们如何快速的生产测试数据？这些就是这次我们需要讨论的内容。
+
+知识要点
+
+- 插入数据
+- 修改数据
+- 删除数据
+
+
+
+总计
+
+- 插入数据：insert 结构、insert select 结构
+- 修改数据：update 语句
+- 删除数据：delete 语句，清空表操作
+

@@ -1542,33 +1542,51 @@
 ( function( document, window ) {
     "use strict";
 
-    function setElement(element, md) {
-        var temp = md.trim();
-        // has config options
-        if(temp.indexOf('---')==0) {
-            var content = md.split( /^---$/m );
-
-            var options = content[1].trim().split("\n");
-            for(var idx=0; idx< options.length; idx++) {
-                console.log("options[idx]", options[idx]);
-                var attr = options[idx].split(":");
-                $(element).attr(attr[0].trim(), attr[1].trim());
-            }
-
-            if(content.length==3) {
-                md = content[2];
-            } else {
-                content.shift();
-                content.shift();
-                md = content.join("---")
-            }
-            
-        }
-        element.innerHTML = markdown.toHTML(md);
-    }
-
     var preInit = function() {
-        if ( window.markdown ) {
+        if ( window.showdown ) {
+            var converter = new showdown.Converter();
+            converter.setFlavor('github');
+
+            function setElement(element, md) {
+                var temp = md.trim();
+                var attrs = null;
+                // has config options
+                if(temp.indexOf('---')==0) {
+                    var content = md.split( /^---$/m );
+                    attrs = {};
+
+                    var options = content[1].trim().split("\n");
+                    for(var idx=0; idx< options.length; idx++) {
+                        if(options[idx].trim()) {
+                            var attr = options[idx].split(":");
+                            attrs[attr[0].trim()] = attr[1].trim();
+                        }
+                    }
+
+                    if(content.length==3) {
+                        md = content[2];
+                    } else {
+                        content.shift();
+                        content.shift();
+                        md = content.join("---")
+                    }
+                    
+                }
+                console.log(attrs, !attrs)
+                if(!attrs) {
+                    attrs = window.pptDefalutAttrs;
+                }
+                for(var key in attrs) {
+                    $(element).attr(key, attrs[key]);
+                }
+                if(attrs.hasOwnProperty('html') && attrs['html']) {
+                    element.innerHTML = md;
+                } else {
+                    // element.innerHTML = markdown.toHTML(md);
+                    element.innerHTML = converter.makeHtml(md)
+                }
+                
+            }
 
             // Unlike the other extras, Markdown.js doesn't by default do anything in
             // particular. We do it ourselves here.
@@ -1582,7 +1600,7 @@
               var slides = element.textContent.split( /^-----$/m );
               var i = slides.length - 1;
 
-              setElement(element, slides[i]);
+              
               // element.innerHTML = markdown.toHTML( slides[ i ] );
 
               // If there's an id, unset it for last, and all other, elements,
@@ -1592,9 +1610,11 @@
                 id = element.id;
                 element.id = "";
               }
+              var template = element.cloneNode(false);
+              setElement(element, slides[i]);
               i--;
               while ( i >= 0 ) {
-                var newElement = element.cloneNode( false );
+                var newElement = template.cloneNode( false );
                 setElement(newElement, slides[i]);
                 // newElement.innerHTML = markdown.toHTML( slides[ i ] );
                 element.parentNode.insertBefore( newElement, element );

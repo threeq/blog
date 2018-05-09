@@ -1,0 +1,33 @@
+#impress-mark-bg {
+	display: none; 
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	background-color: #fff;
+	height: 100%; 
+	width: 100%;
+}
+
+#impress-wrapper {
+	position: relative; 
+	overflow: hidden;
+	height: 100%; 
+	width: 100%;
+}
+
+#impress-toolbar {
+	font-size: 16px
+}
+
+#impress-toolbar select {
+	margin: 0 10px;
+	height: 28px;
+}
+
+.step-3d {
+	-webkit-transform-style: preserve-3d;
+    -moz-transform-style:    preserve-3d; /* Y U need this Firefox?! */
+    -ms-transform-style:     preserve-3d;
+    -o-transform-style:      preserve-3d;
+    transform-style:         preserve-3d;
+}

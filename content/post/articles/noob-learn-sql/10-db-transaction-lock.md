@@ -1,33 +1,27 @@
 ---
-title: 11 Db Transaction Lock
-date: 2018-04-21
-lastmod: 2018-04-21
+title: 小白学 SQL 第十天：事务和锁
+date: 2018-05-07
+lastmod: 2018-05-09
 draft: true
-keywords: ["Threeq", "博客", "程序员", "架构师"]
+keywords: ["Threeq", "博客", "程序员", "架构师", "Mysql","SQL","SQL学习","数据库","create 语句"]
 categories:
- - 笔记
+ - 数据库
 tags:
- - 笔记
+ - 数据库
+ - SQL
 toc: true
 comment: true
-description: ""
-
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
+description: "数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"
 ---
 
-## 11-db-transaction-lock
+知识要点
+
+- 事务基本概念
+- 锁
+
+
+总计
+
+- 事务基本概念：事务基本特性、开始事务、事务提交、事务回滚
+- 锁：锁类型、锁级别、锁和事务的关系
+

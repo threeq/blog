@@ -1,8 +1,8 @@
 ---
-title: Test
-date: 2018-05-07
-lastmod: 2018-05-07
-draft: false
+title: {{ replace .Name "-" " " | title }}
+date: {{ dateFormat "2006-01-02" .Date }}
+lastmod: {{ dateFormat "2006-01-02" .Date }}
+draft: true
 keywords: ["Threeq", "博客", "程序员", "架构师"]
 categories:
  - 笔记
@@ -10,17 +10,21 @@ tags:
  - 笔记
 toc: false
 comment: true
-description: "ppt view demo"
+description: ""
 
-pptView: true
-
+PptView: 
+  enable: true
+  attrs:
+    data-transition-duration: 1000
+    data-autoplay: 10
+  css:
+#    - /lib/impress/classic-slides.css
 ---
 
 ---
-data-rel-x: 0
-data-rel-y: 900
+data-x: -1000
+data-y: -1500
 ---
-
 # Markdown 
 ## to author Impress.js presentations
 
@@ -28,16 +32,11 @@ data-rel-y: 900
 * Added by popular request ---
   * Easy way to make quick, simple yet aesthetic, presentations
   * Authoring without all the clutter of HTML
----
-
-dsfdf
----
-aaaa
-
 -----
+
 ---
-data-rel-x: 0
-data-rel-y: 900
+data-rel-x: 1000
+data-rel-y: 0
 ---
 # Markdown.js
 
@@ -56,3 +55,54 @@ data-rel-y: 900
 
 * You can use *italics* & **bold**
 * ...and `code`
+
+-----
+---
+data-rel-x: 1100
+data-rel-y: 300
+data-rotate: 30
+---
+# 1
+
+```
+data-rel-x: 1100
+data-rel-y: 300
+data-rotate: 30
+```
+
+-----
+---
+data-rel-x: 800 
+data-rel-y: 800
+data-rotate: 60
+---
+# 2
+
+```
+data-rel-x: 800 
+data-rel-y: 800
+data-rotate: 60
+```
+
+-----
+---
+html: true
+data-rel-x: 300 
+data-rel-y: 1100 
+data-rotate: 90
+---
+# Motion effects 101
+<p class="fly-in fly-out">Fly in</p>
+<p class="fade-in fade-out" style="transition-delay: 2s">Fade in</p>
+<p class="zoom-in zoom-out" style="transition-delay: 4s">And zoom in</p>
+
+-----
+---
+data-x: 6200
+data-y: 4300
+data-z: -100
+data-rotate-x: -40
+data-rotate-y: 10
+data-scale: 2
+---
+# This is 3D

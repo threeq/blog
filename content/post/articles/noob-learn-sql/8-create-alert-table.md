@@ -1,33 +1,45 @@
 ---
-title: 9 Table Index
-date: 2018-04-21
-lastmod: 2018-04-21
-draft: true
-keywords: ["Threeq", "博客", "程序员", "架构师"]
+title: 小白学 SQL 第八天：表结构管理
+date: 2018-05-07
+lastmod: 2018-05-09
+draft: false
+keywords: ["Threeq", "博客", "程序员", "架构师", "Mysql","SQL","SQL学习","数据库","create 语句"]
 categories:
- - 笔记
+ - 数据库
 tags:
- - 笔记
+ - 数据库
+ - SQL
 toc: true
 comment: true
-description: ""
+description: "数据库管理系统（DBMS）是 IT 从业者必备工具之一，你能在市面上看到的任何一个软件系统，在后面支持的一定有它的身影。 而这里面关系型数据库管理系统（RDBMS） 目前暂居了绝大部分，操作 RDBMS 的基础就是今天我们要开始学习的 SQL（结构化查询语言），所以我们有必要针对 SQL 进行系统全面的学习。同时会对数据库中的一些基础原理和设计工具进行介绍：ER 图、数据类型、范式等。适合小白用户（初学者和刚入门）。"
 
-autoCollapseToc: false
-postMetaInFooter: false
-hiddenFromHomePage: false
-
-contentCopyright: false
-reward: false
-mathjax: false
-mathjaxEnableSingleDollar: false
-
-flowchartDiagrams:
-  enable: false
-  options: ""
-
-sequenceDiagrams: 
-  enable: false
-  options: ""
 ---
 
-## 9-table-index
+前面七天全部聚焦在数据查询，就是怎么从表里面取出我们想要的数据。但是这些表是如何建立？建立的时候需要注意哪些信息？如果修改或删除表结构？。这次就一起来讨论表结构的基本管理操作。
+
+知识要点
+
+* 创建表
+* 修改表
+* 删除表
+
+
+<!--more-->
+
+# 创建表
+
+
+
+# 修改表
+
+
+
+#  删除表
+
+
+
+# 总计
+
+* 创建表： create 语句语法、表存储引擎、字符集、列
+* 修改表：增加/删除字段、重命名字段、修改字段类型
+* 表删除：drop 语法
