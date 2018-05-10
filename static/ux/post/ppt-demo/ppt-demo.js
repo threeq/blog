@@ -3,10 +3,10 @@ var acmeDrawGraph = function() {
     
     // Q1-Q2: get innerHTML, remove €
     var value = document.getElementById('acme-q1').innerHTML;
-    if( value[value.length-1] == "€" ) value = value.substring(0, value.length-1);
+    value = value.substring(1);
     profits['q1'] = value;
     var value = document.getElementById('acme-q2').innerHTML;
-    if( value[value.length-1] == "€" ) value = value.substring(0, value.length-1);
+    value = value.substring(1);
     profits['q2'] = value;
     
     // Q3-Q4: get input.value

@@ -1,9 +1,9 @@
 ---
-title: Hugo 集成 impress.js 实现播放效果
+title: Hugo 集成 impress.js 实现 ppt 播放效果
 date: 2018-05-09
-lastmod: 2018-05-09
+lastmod: 2018-05-10
 draft: false
-keywords: ["Threeq", "博客", "程序员", "架构师", "Hugo", "markdown", "ppt"]
+keywords: ["Threeq", "博客", "程序员", "架构师", "Hugo", "markdown", "ppt", "impress.js"]
 categories:
  - 笔记
 tags:
@@ -20,9 +20,9 @@ PptView:
     data-autoplay: 10
   css:
     - /lib/impress/classic-slides.css
-    - /post/ppt-demo/ppt-demo.css
+    - /ux/post/ppt-demo/ppt-demo.css
   js:
-    - /post/ppt-demo/ppt-demo.js
+    - /ux/post/ppt-demo/ppt-demo.js
 ---
 
 
