@@ -211,7 +211,7 @@ learn_test, learn_temp;
 
 可以再次执行上面的 sql 和 `drop table learn_test, learn_temp;` 看有什么不同返回信息。
 
-# 总计
+# 总结
 
 * 创建表： create 语句语法、表存储引擎、字符集、列
 * 修改表：增加/删除字段、重命名字段、修改字段类型

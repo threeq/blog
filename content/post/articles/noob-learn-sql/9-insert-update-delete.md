@@ -173,7 +173,7 @@ where c_status=4;
 - [ ] 删除处于异常状态的班级
 - [ ] 删除没有学生参与的班级
 
-总计
+# 总结
 
 - 插入数据：insert 结构、insert select 结构
 - 修改数据：update 语句
