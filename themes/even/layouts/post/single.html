@@ -29,7 +29,7 @@
 
     <!-- Content -->
     <div class="post-content">
-      {{ if .Page.Params.pptView.enable -}}
+      {{ if .Page.Params.pptView.enable }}
         {{ partial "post/ppt.html" . }}
       {{ else }}
         {{ .Content }}
