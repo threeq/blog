@@ -2,4 +2,4 @@
 FROM jupyter/tensorflow-notebook
 MAINTAINER threeq<threeq@foxmail.com>
 
-RUN pip install hugo_jupyter
+#RUN pip install hugo_jupyter

@@ -115,7 +115,7 @@ function term2html(text, options) {
 {{ $file := .Get 0 }}
 {{ $ipynb := getJSON "content/" $file }}
 
-{{ range $idx, $cell := $ipynb.cells }}
+{{ range $cell := $ipynb.cells }}
   {{ if eq $cell.cell_type "markdown" }}
     
     {{ range $source := $cell.source }}
@@ -150,7 +150,7 @@ function term2html(text, options) {
 
       {{ if $cell.outputs }}
         <span style="display: block;position: absolute;left: 86px;margin-top: -13px;background-color: white;padding: 0px 0px 0px 9px;">执行结果：</span>
-        <div id="outputs-{{ $idx }}" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
+        <div class="outputs" style="margin-left: 60px; border: 1px solid lightgrey; padding: 20px 0 0 20px;">
           {{ range $output := $cell.outputs }}
             {{ if eq $output.output_type "stream" }}
               {{ range $text := $output.text }}
@@ -173,21 +173,24 @@ function term2html(text, options) {
           <textarea >{{ $.Scratch.Get "outputs" }}</textarea>
           {{ $.Scratch.Set "outputs" "" }}
         </div>
-        <script type="text/javascript">
-            var result = $("#outputs-{{ $idx }} textarea").val();
-            $("#outputs-{{ $idx }}").html(function (text) {
-              return term2html(text
-                                  .replace(/\n/g,'br-and-br')
-                                  .replace(/ /g, 'sp-and-sp'))
-                            .replace(/(br-and-br)/g,'<br/>')
-                            .replace(/(sp-and-sp)/g, '&nbsp;')
-                         ;
-            }(result));
-        </script>
         {{ end }}
       </div>
   {{ end }}
 {{ end }}
+<script type="text/javascript">
+  $(".outputs>textarea").each(function(){
+    var el = $(this);
+    console.log(el)
+    el.parent().html(function (text) {
+      return term2html(text
+                          .replace(/\n/g,'br-and-br')
+                          .replace(/ /g, 'sp-and-sp'))
+                    .replace(/(br-and-br)/g,'<br/>')
+                    .replace(/(sp-and-sp)/g, '&nbsp;')
+                 ;
+    }(el.val()));
+  })
+</script>
 {{ range $attachment := $.Scratch.Get "attachments" }}
   {{ $.Scratch.Set "content" (replace ($.Scratch.Get "content") $attachment.filename $attachment.dataURL) }}
 {{ end }}
