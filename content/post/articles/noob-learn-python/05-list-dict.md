@@ -1,7 +1,7 @@
 ---
-title: Python学习 04：python 字符串类型
-date: 2018-07-05
-lastmod: 2018-07-05
+title: Python学习 05：python 列表、元组、字典
+date: 2018-07-14
+lastmod: 2018-07-14
 draft: false
 keywords: ["Threeq", "博客", "程序员", "架构师", "Python", "python3"]
 categories:
@@ -14,15 +14,13 @@ description: "python 是一门使用很广的动态语言，不论是在系统�
 
 ---
 
-字符串是 Python 中最常用的数据类型。我们可以使用引号('或")来创建字符串。
+列表、元组、字典均是 Python 中基础数据类型。
 
-* 字符串字面量
-* 字符串操作
-* 字符串格式化
-* 字符串转换
-* 模式匹配（正则表达式）介绍
+* 列表操作
+* 元组操作
+* 字典操作
 
 <!--more-->
 
-{{< jupyter_notebook "post/articles/noob-learn-python/lab/work/04-strings.ipynb" >}}
+{{< jupyter_notebook "post/articles/noob-learn-python/lab/work/05-list-tuple-dict.ipynb" >}}
 
