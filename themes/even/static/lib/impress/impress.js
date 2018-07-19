@@ -1572,7 +1572,6 @@
                     }
                     
                 }
-                console.log(attrs, !attrs)
                 if(!attrs) {
                     attrs = window.pptDefalutAttrs;
                 }
@@ -1597,9 +1596,8 @@
             for ( var idx = 0; idx < markdownDivs.length; idx++ ) {
               var element = markdownDivs[ idx ];
 
-              var slides = element.textContent.split( /^-----$/m );
+              var slides = element.innerHTML.split( /^-----$/m );
               var i = slides.length - 1;
-
               
               // element.innerHTML = markdown.toHTML( slides[ i ] );
 

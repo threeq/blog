@@ -1,7 +1,7 @@
 ---
 title: Hugo 集成 impress.js 实现 ppt 播放效果
 date: 2018-05-09
-lastmod: 2018-05-10
+lastmod: 2018-07-19
 draft: false
 keywords: ["Threeq", "博客", "程序员", "架构师", "Hugo", "markdown", "ppt", "impress.js"]
 categories:
@@ -43,8 +43,9 @@ PptView:
 
 <!--more-->
 
------
+{{< ppt_view >}}
 
+-----
 ---
 data-x: -1000
 data-y: -1500
@@ -106,6 +107,7 @@ data-rotate: 90
 id: acme
 ---
 # graph 演示
+
 <div id="acme-graph-1">
   <div id="acme-graph-bars">
       <div id="acme-graph-q1" class="acme-graph-bar red" style="height: 183.529px;"></div>
@@ -122,7 +124,6 @@ id: acme
   <tr><td>Q4</td><td>￥<input id="acme-q4" size="5" oninput="acmeDrawGraph();" /></td></tr>
 </table> 
 
-<script src="/post/ppt-demo/ppt-demo.js"></script>
 -----
 
 # 2
@@ -176,3 +177,4 @@ class: step slide markdown step-3d
 <div id="signle-drawing-board-demo">
   <div class="shape"></div>
 </div>
+{{< /ppt_view >}}

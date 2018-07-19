@@ -1,1 +1,71 @@
-ppt_view.html
+{{ range .Site.Params.pptView.css }}
+   <link rel="stylesheet" type="text/css" href="{{ . }}">
+{{ end }}
+{{ range .Page.Params.pptView.css }}
+  {{ if . }}
+   <link rel="stylesheet" type="text/css" href="{{ . }}">
+  {{ end }}
+{{ end }}
+
+{{ $file := .Get 0 }}
+
+{{ if .Page.Params.pptView.startBtn }}
+  <button class="pptstart" onclick="pptstart();">{{ .Page.Params.pptView.startBtn }}</button>
+{{ else }}
+  <button class="pptstart" onclick="pptstart();">演示</button>
+{{ end }}
+
+
+<div id="impress-mark-bg">
+  <div id="impress-wrapper">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+    <div id="impress" data-transition-duration="1000">
+      <div id="markdown" class="step slide markdown">{{ .Inner }}</div>
+    </div>
+  </div>
+  <div id="impress-toolbar"></div>
+  <div class="impress-progressbar"><div></div></div>
+  <div class="impress-progress"></div>
+  <div id="impress-help"></div>
+</div>
+
+<script type="text/javascript" src="/lib/impress/showdown.min.js"></script>
+<script type="text/javascript" src="/lib/impress/impress.js"></script>
+<script type="text/javascript">
+  window.pptDefalutAttrs = JSON.parse({{ .Site.Params.PptView.Attrs | jsonify }});
+  
+  var api;
+  // var rawContent = $('#impress').html();
+
+  {{ if .Page.Params.PptView.Attrs -}}
+  var impressAttrs = JSON.parse({{ .Page.Params.PptView.Attrs | jsonify }});
+  if(impressAttrs) {
+    for(var key in impressAttrs) {
+      $('#impress').attr(key, impressAttrs[key]);
+    }
+  }
+  {{ end }}
+
+  function pptstart() {
+    // $('#impress').html(rawContent);
+    $('#impress-mark-bg').show();
+    api = impress();
+    api.init();
+    $("#impress-toolbar").append('<button onclick="pptclose();">关闭</button>')
+    setTimeout(function () {
+      $('#impress').focus();
+    }, 100)
+  }
+  function pptclose(argument) {
+    $('#impress-mark-bg').hide();
+    api.tear();
+  }
+</script>
+{{ range .Page.Params.pptView.js }}
+  {{ if . }}
+   <script src="{{ . }}"></script>
+  {{ end }}
+{{ end }}

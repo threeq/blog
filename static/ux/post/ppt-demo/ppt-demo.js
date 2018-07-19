@@ -32,5 +32,7 @@ var acmeDrawGraph = function() {
 
 var rootElement = document.getElementById( "impress" );
 rootElement.addEventListener( "impress:init", function() {
-  acmeDrawGraph();
+  setTimeout(function () {
+      acmeDrawGraph();
+  });
 });
