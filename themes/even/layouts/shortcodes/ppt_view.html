@@ -63,6 +63,9 @@
     $('#impress-mark-bg').hide();
     api.tear();
   }
+  function pptgoto(page){
+    api.goto(page);
+  }
 </script>
 {{ range .Page.Params.pptView.js }}
   {{ if . }}
