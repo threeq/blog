@@ -1,8 +1,8 @@
 ---
-title: Python学习 09：异常
+title: Python学习 09：异常处理
 date: 2018-09-14
 lastmod: 2018-09-14
-draft: true
+draft: false
 keywords: ["Threeq", "博客", "程序员", "架构师", "Python", "python3"]
 categories:
  - python
@@ -16,7 +16,7 @@ description: "python 是一门使用很广的动态语言，不论是在系统�
 
 这次学习 python 中函数的基础知识
 
-* 异常定义
+* 标准异常
 * 异常不做
 * 手动抛出异常
 * 自定义异常
