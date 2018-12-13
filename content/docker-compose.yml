@@ -1,0 +1,13 @@
+version: '3'
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    restart: unless-stopped
+    ports:
+      - 32324:80
+    environment:
+      - SERVICE_80_NAME=blog_threeq_me
+      - SERVICE_80_TAGS=open_web,path:/,host:blog.threeq.me
+

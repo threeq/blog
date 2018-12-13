@@ -1,0 +1,15 @@
+sudo: required
+language: python
+python:
+- '3.6'
+before_install:
+- openssl aes-256-cbc -K $encrypted_9618cf018fdf_key -iv $encrypted_9618cf018fdf_iv
+  -in .travis/my_machine_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+script:
+- echo 'gogogo'
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh $user@$host
+  on:
+    branch: master
