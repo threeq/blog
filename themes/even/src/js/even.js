@@ -208,7 +208,7 @@ Even._linkToc = function () {
 Even.flowchart = function () {
   if (!window.flowchart) return
 
-  const blocks = document.querySelectorAll('pre code.language-flowchart')
+  const blocks = document.querySelectorAll('pre code.language-flow')
   for (let i = 0; i < blocks.length; i++) {
     const block = blocks[i]
     const rootElement = block.parentElement
