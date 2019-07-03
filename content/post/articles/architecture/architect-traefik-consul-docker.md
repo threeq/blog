@@ -37,7 +37,7 @@ sequenceDiagrams:
 
 在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：
 
-![常见 Web 服务架构](https://ws4.sinaimg.cn/large/006tKfTcgy1g0xtnk369fj30mi0lugmb.jpg)
+![常见 Web 服务架构](normal-web.jpg)
 
 这里首先介绍接入层和 web 层的扩展性方案和实施。
 
@@ -55,7 +55,7 @@ sequenceDiagrams:
 
 针对以上需求设计一种简单、可行的架构方案
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1g0xt060j8xj30wc0hoq3a.jpg)
+![](006tKfTcgy1g0xt060j8xj30wc0hoq3a.jpg)
 
 方案的可行性需要两个关键点：
 
@@ -99,7 +99,7 @@ sequenceDiagrams:
 
 # 工作机制
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0y5y3iql4j319a0ri0yy.jpg)
+![](006tKfTcly1g0y5y3iql4j319a0ri0yy.jpg)
 
 `Registrator` 负载监听本地 Docker 服务中的 docker 容器，负责根据容器的启动配置信息将容器注册到`注册中心`，同时在容器停止或销毁时在注册中心销毁相关信息（图中蓝色箭头表示）
 
@@ -113,21 +113,21 @@ sequenceDiagrams:
 
 由于 traefik 自身已经支持注册中心发现功能，所以`配置刷新`组件不再需要。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcly1g0z1o9q7knj31940regro.jpg)
+![](006tKfTcly1g0z1o9q7knj31940regro.jpg)
 
 ## nginx + consul 方式实现
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0z1r6lst0j31940qwdly.jpg)
+![](006tKfTcly1g0z1r6lst0j31940qwdly.jpg)
 
 ## nginx + etcd + confd 方式实现
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0z1sf0x9bj31960ra44k.jpg)
+![](006tKfTcly1g0z1sf0x9bj31960ra44k.jpg)
 
 # 框架搭建
 
 这里给出的配置是 `traefix + consul` 方式。这里测试采用单机 docker 方式部署，所以相应的配置只能用于开发或测试环境，生产环境需要做高可用配置，关于高可用方案后面有具体说明，具体部署图如下：
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0z0by1f5rj30iu0lgmzr.jpg)
+![](006tKfTcly1g0z0by1f5rj30iu0lgmzr.jpg)
 
 测试机 IP 地址为：192.168.3.26，请替换成自己的真实 IP。
 
@@ -135,7 +135,7 @@ sequenceDiagrams:
 
 在开始之前新建一个 `traefik` 目录用以存放所需的代码和配置文件，最后的目录结构如下
 
-![](https://ws4.sinaimg.cn/large/006tKfTcly1g0z6zcq7zoj30dw0ao758.jpg)
+![](006tKfTcly1g0z6zcq7zoj30dw0ao758.jpg)
 
 ## consul 部署
 
@@ -168,7 +168,7 @@ services:
 
 在`traefik-consul`中启动 Consul 服务：`docker-compose up -d`，在浏览器里面访问 consul 服务：http://192.168.3.26:8500
 
-![](https://ws1.sinaimg.cn/large/006tKfTcly1g0z5rpd7oxj325w0juwgz.jpg)
+![](006tKfTcly1g0z5rpd7oxj325w0juwgz.jpg)
 
 ## Registrator 部署
 
@@ -195,7 +195,7 @@ services:
 
 在`consul-registrator`中启动 Registrator 服务：`docker-compose up -d`，这时在 consul 管理界面可以看到多出了2个Service
 
-![](https://ws1.sinaimg.cn/large/006tKfTcly1g0z5vdls3cj32620pgq6g.jpg)
+![](006tKfTcly1g0z5vdls3cj32620pgq6g.jpg)
 
 ## Traefik 部署
 
@@ -293,11 +293,11 @@ services:
 
 在`traefik-gateway`中启动 Traefik 服务：`docker-compose up -d`，这时的 consul 里多出如下服务
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0z69ndvwoj322q0u0dkh.jpg)
+![](006tKfTcly1g0z69ndvwoj322q0u0dkh.jpg)
 
 在浏览器里面访问 Traefik 服务：http://192.168.3.26:8080 进入Traefik 管理界面，可以看到如下
 
-![](https://ws2.sinaimg.cn/large/006tKfTcly1g0z68kw9esj31e40u0gr2.jpg)
+![](006tKfTcly1g0z68kw9esj31e40u0gr2.jpg)
 
 > 现在很多系统使用 Nginx 作为服务网关，按照上面的分析使用 Nginx 只需要替换掉 Traefik 即可，经过本人测试完全可行，并且 `Nginx + Consul` 已经用于我司生产环境中。具体 Nginx 的配置可以参考：https://github.com/threeq/useful-scripts/tree/master/my-docker/consul-nginx
 
@@ -430,7 +430,7 @@ services:
 
 最后的文件目录结构像这样：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcly1g0z1ajbizij30bw0c2js7.jpg)
+![](006tKfTcly1g0z1ajbizij30bw0c2js7.jpg)
 
 在`traefik-example`目录中启动测试服务容器
 
@@ -440,15 +440,15 @@ docker-compose up --scale web_go=3
 
 在控制台会看到如下日志信息
 
-![](https://ws2.sinaimg.cn/large/006tKfTcly1g0z6hhkoi9j31hk0io43l.jpg)
+![](006tKfTcly1g0z6hhkoi9j31hk0io43l.jpg)
 
 在 consul 里面应该可以看到注册的 web_go 服务和 web_python 服务
 
-![](https://ws4.sinaimg.cn/large/006tKfTcly1g0z6iayolvj31ta0u0n3e.jpg)
+![](006tKfTcly1g0z6iayolvj31ta0u0n3e.jpg)
 
 在 Traefik 里面应该可以看到 web_go 和 web_python 的路由信息
 
-![](https://ws2.sinaimg.cn/large/006tKfTcly1g0z6j20tgfj31bi0u07by.jpg)
+![](006tKfTcly1g0z6j20tgfj31bi0u07by.jpg)
 
 ## 访问测试
 
@@ -463,17 +463,17 @@ docker-compose up --scale web_go=3
 
 1、在浏览器中访问 http://python.traefix.example.localhost
 
-![](https://ws1.sinaimg.cn/large/006tKfTcly1g0z6sga7xlj30om06gt9d.jpg)
+![](006tKfTcly1g0z6sga7xlj30om06gt9d.jpg)
 
 2、在浏览器中访问 http://go.traefix.example.localhost
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g0z6stbup1j30ok05swf4.jpg)
+![](006tKfTcly1g0z6stbup1j30ok05swf4.jpg)
 
 以上 2 不正确显示表示已经能正常路由了。下面测试一下负载均衡
 
 3、多次访问 http://go.traefix.example.localhost 后，可以看到访问日志如下说明已经进行负载均衡了，启动的 web_go 3个实例都输出正常请求响应日志。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcly1g0z6ul3s65j31fc0u0gv6.jpg)
+![](006tKfTcly1g0z6ul3s65j31fc0u0gv6.jpg)
 
 # 思考
 
@@ -481,13 +481,13 @@ docker-compose up --scale web_go=3
 
 > 这里实现了一个简单的高可用方案，在网关层再加入一个网关节点 `node2` ，和 `node1` 一起形成`主从服务`。实现方案上可以使用  `Keepalived + VIP` 的方式，这样在一台服务器挂掉时，可以自动切换到另外一台服务器上。结构图如下：
 >
-> ![](https://ws2.sinaimg.cn/large/006tKfTcly1g0y6c3f7a9j317v0u0gw6.jpg)
+> ![](006tKfTcly1g0y6c3f7a9j317v0u0gw6.jpg)
 
 2、通过上面的架构修改，网关层也已经达到高可用，但是发现所有请求都在单台网关机器上，单台机器能力再强也是有限的，怎么让网关层的机器水平扩展加入多台机器同时服务形成集群？
 
 > 这里可以使用使用 DNS 查询的轮询机制，我们搭建多套`主从结构反向代理服务器`，然后在 DNS 解析配置里面配置多个 `VIP`，这样在客户端进行 DNS 解析时就会轮询返回配置的多个 VIP。结构图如下：
 >
->   ![](https://ws3.sinaimg.cn/large/006tKfTcly1g0y74p0xjyj317v0u0k1n.jpg)
+>   ![](006tKfTcly1g0y74p0xjyj317v0u0k1n.jpg)
 
 3、注册中心高可用方案？
 

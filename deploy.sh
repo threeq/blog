@@ -21,10 +21,7 @@ git add .
 
 # Commit changes.
 msg="rebuilding site `date`"
-if [ $# -ge 1  ]
-    then msg="$1"
-fi
-    git commit -m "$msg"
+git commit -m "$msg\n$1"
 
  # Push source and build repos.
 git push origin master
