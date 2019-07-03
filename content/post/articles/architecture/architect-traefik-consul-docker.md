@@ -37,7 +37,7 @@ sequenceDiagrams:
 
 在微服务架构的驱动下，我们的服务被拆分得越来越细，同时随着业务的增长服务也会越来越多，这就要求系统有更高的扩展能力，同时尽力保持架构的简洁性，对业务代码最少的侵入性，同时能支持异构系统更好。目前比较常见的一种服务架构如下：
 
-![常见 Web 服务架构](normal-web.jpg)
+![常见 Web 服务架构](/post/articles/architecture/architect-traefik-consul-docker/normal-web.jpg)
 
 这里首先介绍接入层和 web 层的扩展性方案和实施。
 
